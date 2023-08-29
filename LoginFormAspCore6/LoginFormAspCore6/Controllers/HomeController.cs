@@ -73,6 +73,38 @@ namespace LoginFormAspCore6.Controllers
             return RedirectToAction("Login");
         }
 
+        public IActionResult Register()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(User user)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Register");
+            }
+
+            try
+            {
+
+                await myDbContext.Users.AddAsync(user);
+                await myDbContext.SaveChangesAsync();
+                TempData["success"] = "Registered Sucesfully";
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Register");
+            }
+
+            return RedirectToAction("Login");
+        }
+
+
+
         public IActionResult Privacy()
         {
             return View();
