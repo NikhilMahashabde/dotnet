@@ -5,7 +5,6 @@ namespace ShopMS.Services.ProductAPI.Model
     public class Product
     {
 
-
         [Key]
         public int ProductId { get; set; }
 
@@ -17,7 +16,7 @@ namespace ShopMS.Services.ProductAPI.Model
 
         public string Description { get; set; }
 
-        public string CatagoryName { get; set; }
+        public string CategoryName { get; set; }
 
         public string ImageUrl { get; set; }
 

@@ -29,7 +29,7 @@ namespace ShopMS.Services.ProductAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
 
-                    b.Property<string>("CatagoryName")
+                    b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -51,6 +51,44 @@ namespace ShopMS.Services.ProductAPI.Migrations
                     b.HasKey("ProductId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            CategoryName = "Appetizer",
+                            Description = "Praesent scelerisque, mi sed ultrices condimentum, lacus ipsum viverra massa, in lobortis sapien eros in arcu. Quisque vel lacus ac magna vehicula sagittis ut non lacus.<br/>Sed volutpat tellus lorem, lacinia tincidunt tellus varius nec. Vestibulum arcu turpis, facilisis sed ligula ac, maximus malesuada neque. Phasellus commodo cursus pretium.",
+                            ImageUrl = "https://shopmsstorage.blob.core.windows.net/shopms/14.jpg",
+                            Name = "Samosa",
+                            Price = 15.0
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            CategoryName = "Appetizer",
+                            Description = "Praesent scelerisque, mi sed ultrices condimentum, lacus ipsum viverra massa, in lobortis sapien eros in arcu. Quisque vel lacus ac magna vehicula sagittis ut non lacus.<br/>Sed volutpat tellus lorem, lacinia tincidunt tellus varius nec. Vestibulum arcu turpis, facilisis sed ligula ac, maximus malesuada neque. Phasellus commodo cursus pretium.",
+                            ImageUrl = "https://shopmsstorage.blob.core.windows.net/shopms/12.jpg",
+                            Name = "Paneer Tikka",
+                            Price = 13.99
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            CategoryName = "Dessert",
+                            Description = "Praesent scelerisque, mi sed ultrices condimentum, lacus ipsum viverra massa, in lobortis sapien eros in arcu. Quisque vel lacus ac magna vehicula sagittis ut non lacus.<br/>Sed volutpat tellus lorem, lacinia tincidunt tellus varius nec. Vestibulum arcu turpis, facilisis sed ligula ac, maximus malesuada neque. Phasellus commodo cursus pretium.",
+                            ImageUrl = "https://shopmsstorage.blob.core.windows.net/shopms/11.jpg",
+                            Name = "Sweet Pie",
+                            Price = 10.99
+                        },
+                        new
+                        {
+                            ProductId = 4,
+                            CategoryName = "Entree",
+                            Description = "Praesent scelerisque, mi sed ultrices condimentum, lacus ipsum viverra massa, in lobortis sapien eros in arcu. Quisque vel lacus ac magna vehicula sagittis ut non lacus.<br/>Sed volutpat tellus lorem, lacinia tincidunt tellus varius nec. Vestibulum arcu turpis, facilisis sed ligula ac, maximus malesuada neque. Phasellus commodo cursus pretium.",
+                            ImageUrl = "https://shopmsstorage.blob.core.windows.net/shopms/13.jpg",
+                            Name = "Pav Bhaji",
+                            Price = 15.0
+                        });
                 });
 #pragma warning restore 612, 618
         }
