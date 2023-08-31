@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ShopMS.Services.ProductAPI;
 using ShopMS.Services.ProductAPI.DbContexts;
+using ShopMS.Services.ProductAPI.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services.AddSwaggerGen();
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var provider = builder.Services.BuildServiceProvider();
 var config = provider.GetService<IConfiguration>();
