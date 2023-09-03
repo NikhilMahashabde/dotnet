@@ -1,9 +1,19 @@
+using ShopMS.Web;
+using ShopMS.Web.Services;
+using ShopMS.Web.Services.IServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddHttpClient<IProductService, ProductService>();
+
+SD.ProductApiBase = builder.Configuration["ServiceUrls:ProductAPI"];
+builder.Services.AddScoped<IProductService, ProductService>();
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
