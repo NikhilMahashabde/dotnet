@@ -7,7 +7,7 @@ namespace ShopMS.Web.Models
 
         public ApiType ApiType { get; set; } = ApiType.GET;
 
-        public string Url { get; set; }
+        public string Url { get; set; } = "https://localhost:7166";
 
         public object Data { get; set; }
 

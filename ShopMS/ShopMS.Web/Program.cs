@@ -4,13 +4,20 @@ using ShopMS.Web.Services.IServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpClient<IProductService, ProductService>();
 
-SD.ProductApiBase = builder.Configuration["ServiceUrls:ProductAPI"];
+
+var provider = builder.Services.BuildServiceProvider();
+var config = provider.GetService<IConfiguration>();
+SD.ProductApiBase = config.GetSection("ServiceUrls")["ProductAPI"];
 builder.Services.AddScoped<IProductService, ProductService>();
+
+
 
 var app = builder.Build();
 

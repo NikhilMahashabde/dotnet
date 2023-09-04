@@ -18,7 +18,7 @@ namespace ShopMS.Web.Services
             {
                 ApiType = SD.ApiType.POST,
                 Data = productDto,
-                Url = SD.ProductApiBase + "/api/products",
+                Url = SD.ProductApiBase + "api/products",
                 AccessToken = ""
             });
         }
@@ -28,7 +28,7 @@ namespace ShopMS.Web.Services
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.DELETE,
-                Url = SD.ProductApiBase + "/api/products/" + id,
+                Url = SD.ProductApiBase + "api/products/" + id,
                 AccessToken = ""
             });
         }
@@ -38,7 +38,7 @@ namespace ShopMS.Web.Services
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.GET,
-                Url = SD.ProductApiBase + "/api/products/",
+                Url = SD.ProductApiBase + "api/products",
                 AccessToken = ""
             });
         }
@@ -48,7 +48,7 @@ namespace ShopMS.Web.Services
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.GET,
-                Url = SD.ProductApiBase + "/api/products/" + id,
+                Url = SD.ProductApiBase + "api/products/" + id,
                 AccessToken = ""
             });
         }
@@ -58,7 +58,7 @@ namespace ShopMS.Web.Services
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.PUT,
-                Url = SD.ProductApiBase + "/api/products/",
+                Url = SD.ProductApiBase + "api/products",
                 Data = productDto,
                 AccessToken = ""
             });

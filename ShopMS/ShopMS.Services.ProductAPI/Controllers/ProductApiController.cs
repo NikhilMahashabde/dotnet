@@ -91,7 +91,7 @@ namespace ShopMS.Services.ProductAPI.Controllers
         [HttpDelete]
         [Route("{id}")]
 
-        public async Task<ResponseDto> Delete(int id)
+        public async Task<object> Delete(int id)
         {
 
             try

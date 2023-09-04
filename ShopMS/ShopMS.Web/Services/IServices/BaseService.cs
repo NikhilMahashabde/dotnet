@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ShopMS.Web.Models;
 using System.Text;
-
 namespace ShopMS.Web.Services.IServices
 {
     public class BaseService : IBaseService
@@ -25,6 +24,8 @@ namespace ShopMS.Web.Services.IServices
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine("Received URL");
+                System.Diagnostics.Debug.WriteLine(apiRequest.Url);
                 var client = httpClient.CreateClient("ShopMSAPI");
                 HttpRequestMessage message = new HttpRequestMessage();
                 message.Headers.Add("Accept", "application/json");
@@ -51,7 +52,11 @@ namespace ShopMS.Web.Services.IServices
                         break;
 
                 }
+
+
+
                 apiResponse = await client.SendAsync(message);
+
 
                 var apiContent = await apiResponse.Content.ReadAsStringAsync();
 
@@ -66,7 +71,7 @@ namespace ShopMS.Web.Services.IServices
                 {
                     DisplayMessage = "Error",
                     ErrorMessages = new List<string> { Convert.ToString(ex.Message) },
-                    isSuccess = false,
+                    IsSuccess = false,
                 };
                 var res = JsonConvert.SerializeObject(dto);
                 var apiResponseDto = JsonConvert.DeserializeObject<T>(res);
