@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShopMS.Web.Models;
 using System.Diagnostics;
 
@@ -17,6 +18,20 @@ namespace ShopMS.Web.Controllers
         {
             return View();
         }
+
+
+        [Authorize]
+        public IActionResult Login()
+        {
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Logout()
+        {
+            return SignOut("Cookies", "oidc");
+        }
+
 
         public IActionResult Privacy()
         {

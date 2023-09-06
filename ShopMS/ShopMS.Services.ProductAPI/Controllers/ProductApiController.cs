@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShopMS.Services.ProductAPI.Model.Dto;
 using ShopMS.Services.ProductAPI.Repository;
 
@@ -17,7 +18,9 @@ namespace ShopMS.Services.ProductAPI.Controllers
             this._response = new ResponseDto();
         }
 
+        [Authorize]
         [HttpGet]
+
         public async Task<ResponseDto> Get()
         {
 
@@ -88,6 +91,7 @@ namespace ShopMS.Services.ProductAPI.Controllers
             return _response;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("{id}")]
 

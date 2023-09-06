@@ -17,6 +17,27 @@ var config = provider.GetService<IConfiguration>();
 SD.ProductApiBase = config.GetSection("ServiceUrls")["ProductAPI"];
 builder.Services.AddScoped<IProductService, ProductService>();
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "Cookies";
+    options.DefaultChallengeScheme = "oidc";
+
+})
+    .AddCookie("Cookies", c => c.ExpireTimeSpan = TimeSpan.FromMinutes(10))
+    .AddOpenIdConnect("oidc", options =>
+    {
+        options.Authority = config.GetSection("ServiceUrls")["IdentityAPI"];
+        options.GetClaimsFromUserInfoEndpoint = true;
+        options.ClientId = "shopms";
+        options.ClientSecret = "secret";
+        options.ResponseType = "code";
+        options.TokenValidationParameters.NameClaimType = "name";
+        options.TokenValidationParameters.RoleClaimType = "role";
+        options.Scope.Add("shopms");
+        options.SaveTokens = true;
+    });
+
+
 
 
 var app = builder.Build();
@@ -35,6 +56,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
