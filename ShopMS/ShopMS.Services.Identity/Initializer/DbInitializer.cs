@@ -1,10 +1,4 @@
-﻿using IdentityModel;
-using Microsoft.AspNetCore.Identity;
-using ShopMS.Services.Identity.DbContexts;
-using ShopMS.Services.Identity.Models;
-using System.Security.Claims;
-
-namespace ShopMS.Services.Identity.Initializer
+﻿namespace ShopMS.Services.Identity.Initializer
 {
     public class DbInitializer : IDbInitializer
     {
@@ -78,6 +72,7 @@ namespace ShopMS.Services.Identity.Initializer
                 new Claim(JwtClaimTypes.Role, SD.Customer),
 
             }).Result;
+
 
 
 
